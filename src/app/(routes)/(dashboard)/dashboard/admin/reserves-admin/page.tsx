@@ -7,7 +7,7 @@ import TableReservers from './components/TableReserves/TableReserves';
 export default async function pageReservesAdmin() {
   const { userId } = await auth();
   const user = await currentUser();
-  if (!userId || isAdministrator(userId)) return redirect('/');
+  if (!userId || !isAdministrator(userId)) return redirect('/');
 
   const orders = await db.order.findMany({
     orderBy: {

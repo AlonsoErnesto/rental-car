@@ -1,13 +1,13 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { db } from '@/lib/db';
-import { isAdministrator } from '../../../../../../lib/isAdministrator';
+import { isAdministrator } from '@/lib/isAdministrator';
 import ButtonAddCar from './components/ButtonAddCar/ButtonAddCar';
 import ListCars from './components/ListCars/ListCars';
 
 export default async function CarsManagerPage() {
   const { userId } = await auth();
-  if (!userId || isAdministrator(userId)) return redirect('/');
+  if (!userId || !isAdministrator(userId)) return redirect('/');
   const car = await db.car.findMany({
     where: {
       userId,

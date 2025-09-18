@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from '@clerk/nextjs';
-import { isAdministrator } from '../../../../../../lib/isAdministrator';
+import { isAdministrator } from '@/lib/isAdministrator';
 import { SidebarItem } from './SidebarItem';
 import { listNavigateAdmin, listNavigateGeneral } from './SidebarRoutes.data';
 
